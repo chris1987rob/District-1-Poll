@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cathryn Clark — District 1</title>
+<meta name="description" content="Cathryn Clark for District 1 — get to know the candidate, explore the platform, and take the District 1 poll.">
+<!--
+  NOTE: All text below is PLACEHOLDER copy. The original site
+  (cathrynclark.weebly.com) could not be fetched from the build
+  environment. Search for "EDIT:" comments to find every spot
+  that should be replaced with the real content.
+-->
+<style>
+  :root{
+    --navy:#0f2a4a;
+    --navy-2:#16385f;
+    --red:#c8402f;
+    --gold:#e8b23a;
+    --cream:#faf6ef;
+    --ink:#1c2733;
+    --muted:#5b6b7c;
+    --card:#ffffff;
+    --line:rgba(15,42,74,.12);
+    --shadow:0 10px 30px rgba(15,42,74,.12);
+    --radius:16px;
+  }
+  html[data-theme="dark"]{
+    --navy:#0b1e35;
+    --navy-2:#0f2a4a;
+    --cream:#0e1622;
+    --ink:#e9eef5;
+    --muted:#9db0c4;
+    --card:#152238;
+    --line:rgba(233,238,245,.12);
+    --shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:Georgia,'Times New Roman',serif;
+    background:var(--cream);color:var(--ink);
+    line-height:1.65;overflow-x:hidden;
+    transition:background .4s,color .4s;
+  }
+  h1,h2,h3,h4,.btn,nav,.tag{font-family:'Helvetica Neue',Arial,sans-serif}
+
+  /* ---------- scroll progress ---------- */
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;
+    background:linear-gradient(90deg,var(--red),var(--gold));z-index:1001;
+    transition:width .1s linear}
+
+  /* ---------- nav ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:1000;
+    padding:0 5vw;display:flex;align-items:center;justify-content:space-between;
+    height:68px;transition:all .35s;color:#fff}
+  header.scrolled{background:var(--navy);box-shadow:var(--shadow)}
+  .logo{font-weight:800;font-size:1.15rem;letter-spacing:.5px;cursor:pointer;
+    display:flex;align-items:center;gap:.5rem}
+  .logo .star{color:var(--gold);font-size:1.3rem}
+  nav{display:flex;gap:.25rem;align-items:center}
+  nav a{color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;padding:.55rem .85rem;
+    border-radius:8px;transition:background .25s,color .25s}
+  nav a:hover{background:rgba(255,255,255,.14)}
+  nav a.active{background:var(--gold);color:var(--navy)}
+  #themeBtn,#burger{background:rgba(255,255,255,.14);border:none;color:#fff;
+    width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem;
+    transition:transform .3s}
+  #themeBtn:hover{transform:rotate(20deg) scale(1.1)}
+  #burger{display:none}
+  @media(max-width:840px){
+    nav{position:fixed;top:68px;right:-260px;flex-direction:column;
+      background:var(--navy);width:240px;padding:1rem;height:calc(100vh - 68px);
+      transition:right .35s;align-items:stretch}
+    nav.open{right:0}
+    nav a{padding:.9rem 1rem}
+    #burger{display:block}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    align-items:center;text-align:center;position:relative;color:#fff;
+    background:linear-gradient(-45deg,var(--navy),var(--navy-2),#4a1f18,var(--navy));
+    background-size:400% 400%;animation:drift 16s ease infinite;padding:6rem 1.5rem 4rem}
+  @keyframes drift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+  .hero .flag{font-size:.8rem;letter-spacing:.35em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:1rem;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  .hero h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1.05;font-weight:800}
+  .hero h1 span{color:var(--gold)}
+  #type{min-height:2.2em;font-size:clamp(1.05rem,2.5vw,1.5rem);
+    margin-top:1.2rem;color:#dfe8f2;font-style:italic}
+  #type::after{content:"|";animation:blink 1s step-end infinite;color:var(--gold)}
+  @keyframes blink{50%{opacity:0}}
+  .hero-cta{margin-top:2.2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+  .btn{display:inline-block;padding:.95rem 2rem;border-radius:999px;font-weight:700;
+    letter-spacing:.05em;text-decoration:none;cursor:pointer;border:2px solid transparent;
+    font-size:.95rem;transition:transform .25s,box-shadow .25s,background .25s}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.25)}
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-ghost{border-color:#fff;color:#fff}
+  .btn-ghost:hover{background:#fff;color:var(--navy)}
+  .btn-red{background:var(--red);color:#fff}
+  .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+    color:#fff;opacity:.7;animation:bob 2s ease-in-out infinite;font-size:1.5rem;
+    text-decoration:none}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+  /* ---------- sections ---------- */
+  section{padding:5.5rem 5vw;max-width:1150px;margin:0 auto}
+  .tag{display:inline-block;background:var(--red);color:#fff;font-size:.72rem;
+    font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+    padding:.35rem 1rem;border-radius:999px;margin-bottom:1rem}
+  h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1rem;font-weight:800}
+  .lead{color:var(--muted);max-width:640px;font-size:1.08rem;margin-bottom:2.5rem}
+
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- stats ---------- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:1.2rem;margin-top:1rem}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.8rem 1.2rem;text-align:center;box-shadow:var(--shadow);
+    transition:transform .3s}
+  .stat:hover{transform:translateY(-6px)}
+  .stat b{display:block;font-size:2.4rem;color:var(--red);
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  .stat small{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;
+    font-size:.72rem;font-family:'Helvetica Neue',Arial,sans-serif}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:320px 1fr;gap:3rem;align-items:center}
+  @media(max-width:840px){.about-grid{grid-template-columns:1fr}}
+  .portrait{aspect-ratio:4/5;border-radius:var(--radius);
+    background:linear-gradient(160deg,var(--navy),var(--navy-2));
+    display:flex;align-items:center;justify-content:center;color:#fff;
+    box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .portrait::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%,rgba(232,178,58,.25),transparent 60%)}
+  .portrait span{font-size:5rem;font-weight:800;z-index:1;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+
+  /* ---------- platform cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.7rem;cursor:pointer;box-shadow:var(--shadow);
+    transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-6px);border-color:var(--gold)}
+  .card .ico{font-size:2rem;margin-bottom:.8rem;display:block}
+  .card h3{font-size:1.15rem;margin-bottom:.5rem}
+  .card p.teaser{color:var(--muted);font-size:.95rem}
+  .card .more{max-height:0;overflow:hidden;transition:max-height .5s ease;
+    color:var(--ink);font-size:.95rem}
+  .card.open .more{max-height:260px;padding-top:.8rem}
+  .card .chev{position:absolute;top:1.4rem;right:1.4rem;color:var(--red);
+    transition:transform .4s;font-weight:700}
+  .card.open .chev{transform:rotate(180deg)}
+
+  /* ---------- poll ---------- */
+  .poll-wrap{background:var(--navy);border-radius:calc(var(--radius) + 8px);
+    color:#fff;padding:3rem clamp(1.2rem,4vw,3rem);box-shadow:var(--shadow)}
+  .poll-wrap h2{color:#fff}
+  .poll-wrap .lead{color:#c8d6e5}
+  .opt{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.07);
+    border:2px solid rgba(255,255,255,.15);border-radius:12px;padding:1rem 1.2rem;
+    margin-bottom:.8rem;cursor:pointer;transition:border-color .25s,background .25s;
+    position:relative;overflow:hidden}
+  .opt:hover{border-color:var(--gold)}
+  .opt .fill{position:absolute;inset:0;width:0;background:rgba(232,178,58,.22);
+    transition:width 1s cubic-bezier(.22,1,.36,1)}
+  .opt b,.opt .pct{position:relative;z-index:1;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  .opt .pct{margin-left:auto;font-weight:800;color:var(--gold);opacity:0;
+    transition:opacity .5s}
+  .poll-wrap.voted .opt{cursor:default}
+  .poll-wrap.voted .opt .pct{opacity:1}
+  .poll-wrap.voted .opt.chosen{border-color:var(--gold)}
+  #pollMsg{margin-top:1rem;color:var(--gold);font-weight:700;min-height:1.4em;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  #resetPoll{background:none;border:1px solid rgba(255,255,255,.3);color:#c8d6e5;
+    border-radius:999px;padding:.4rem 1.1rem;font-size:.78rem;cursor:pointer;
+    margin-top:.6rem;display:none}
+  .poll-wrap.voted #resetPoll{display:inline-block}
+
+  /* ---------- quotes ---------- */
+  .quote-box{position:relative;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);padding:3rem;
+    text-align:center;min-height:230px;display:flex;flex-direction:column;
+    justify-content:center}
+  .quote-box blockquote{font-size:1.25rem;font-style:italic;transition:opacity .4s}
+  .quote-box cite{margin-top:1.2rem;color:var(--red);font-weight:700;
+    font-style:normal;font-family:'Helvetica Neue',Arial,sans-serif}
+  .dots{display:flex;gap:.5rem;justify-content:center;margin-top:1.5rem}
+  .dots button{width:11px;height:11px;border-radius:50%;border:none;
+    background:var(--line);cursor:pointer;transition:background .3s,transform .3s}
+  .dots button.on{background:var(--red);transform:scale(1.3)}
+
+  /* ---------- contact ---------- */
+  form{display:grid;gap:1rem;max-width:560px}
+  input,textarea,select{width:100%;padding:.95rem 1.1rem;border-radius:10px;
+    border:1.5px solid var(--line);background:var(--card);color:var(--ink);
+    font-size:1rem;font-family:inherit;transition:border-color .25s}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold)}
+  input.err,textarea.err{border-color:var(--red)}
+  #formOK{display:none;background:#1f7a4d;color:#fff;padding:1.1rem 1.4rem;
+    border-radius:12px;font-weight:700;font-family:'Helvetica Neue',Arial,sans-serif}
+
+  footer{background:var(--navy);color:#c8d6e5;text-align:center;
+    padding:2.5rem 5vw;font-size:.9rem}
+  footer .star{color:var(--gold)}
+
+  #toTop{position:fixed;bottom:26px;right:26px;width:48px;height:48px;
+    border-radius:50%;border:none;background:var(--red);color:#fff;font-size:1.2rem;
+    cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;
+    z-index:999;box-shadow:var(--shadow)}
+  #toTop.show{opacity:1;pointer-events:auto}
+  #toTop:hover{transform:translateY(-4px)}
+
+  .confetti{position:fixed;top:-12px;z-index:2000;pointer-events:none;
+    animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header id="hdr">
+  <div class="logo" onclick="location.href='#top'"><span class="star">★</span> CATHRYN&nbsp;CLARK</div>
+  <nav id="nav">
+    <a href="#about">About</a>
+    <a href="#platform">Platform</a>
+    <a href="#poll">D1 Poll</a>
+    <a href="#voices">Voices</a>
+    <a href="#contact">Get Involved</a>
+  </nav>
+  <div style="display:flex;gap:.6rem">
+    <button id="themeBtn" title="Toggle dark mode">🌙</button>
+    <button id="burger" title="Menu">☰</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" style="max-width:none">
+  <!-- EDIT: replace headline/tagline with the real copy from the Weebly site -->
+  <div class="flag">District 1 · Placeholder Copy</div>
+  <h1>Cathryn <span>Clark</span></h1>
+  <div id="type"></div>
+  <div class="hero-cta">
+    <a class="btn btn-gold" href="#poll">Take the District 1 Poll</a>
+    <a class="btn btn-ghost" href="#about">Meet Cathryn</a>
+  </div>
+  <a class="scroll-hint" href="#about">▾</a>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="about-grid">
+    <div class="portrait reveal"><span>CC</span></div><!-- EDIT: swap for real photo -->
+    <div>
+      <span class="tag reveal">About</span>
+      <h2 class="reveal">Meet Cathryn</h2>
+      <!-- EDIT: replace bio with the real one -->
+      <p class="lead reveal">Placeholder bio — Cathryn Clark is a longtime District&nbsp;1
+        resident committed to listening first and acting on what neighbors
+        actually need. Replace this paragraph with the biography from the
+        original site.</p>
+      <div class="stats">
+        <div class="stat reveal"><b class="count" data-to="20">0</b><small>Years in District 1</small></div>
+        <div class="stat reveal"><b class="count" data-to="150">0</b><small>Neighborhood meetings</small></div>
+        <div class="stat reveal"><b class="count" data-to="1200">0</b><small>Doors knocked</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLATFORM ================= -->
+<section id="platform">
+  <span class="tag reveal">Platform</span>
+  <h2 class="reveal">Priorities for District 1</h2>
+  <p class="lead reveal">Placeholder priorities — click any card to read more. Replace with the real platform planks.</p>
+  <div class="cards">
+    <div class="card reveal"><span class="chev">▾</span><span class="ico">🛣️</span>
+      <h3>Roads &amp; Infrastructure</h3>
+      <p class="teaser">Safe streets and reliable services for every neighborhood.</p>
+      <div class="more">Placeholder detail — describe the specific infrastructure plan here: paving schedules, drainage, sidewalks, and how it gets funded.</div>
+    </div>
+    <div class="card reveal"><span class="chev">▾</span><span class="ico">🏫</span>
+      <h3>Strong Schools</h3>
+      <p class="teaser">Investing in classrooms, teachers, and after-school programs.</p>
+      <div class="more">Placeholder detail — outline the education priorities from the original site here.</div>
+    </div>
+    <div class="card reveal"><span class="chev">▾</span><span class="ico">💼</span>
+      <h3>Local Economy</h3>
+      <p class="teaser">Backing small businesses and bringing good jobs home.</p>
+      <div class="more">Placeholder detail — add the economic development plank here.</div>
+    </div>
+    <div class="card reveal"><span class="chev">▾</span><span class="ico">🤝</span>
+      <h3>Open Government</h3>
+      <p class="teaser">Transparent budgets and a seat at the table for residents.</p>
+      <div class="more">Placeholder detail — add the transparency/accountability plank here.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POLL ================= -->
+<section id="poll">
+  <div class="poll-wrap reveal" id="pollBox">
+    <span class="tag" style="background:var(--gold);color:var(--navy)">District 1 Poll</span>
+    <h2>What matters most to you?</h2>
+    <p class="lead">Cast your vote and see how your neighbors are answering. One vote per browser.</p>
+    <div class="opt" data-k="roads"><span class="fill"></span><b>🛣️ Roads &amp; infrastructure</b><span class="pct"></span></div>
+    <div class="opt" data-k="schools"><span class="fill"></span><b>🏫 Schools &amp; education</b><span class="pct"></span></div>
+    <div class="opt" data-k="economy"><span class="fill"></span><b>💼 Jobs &amp; local economy</b><span class="pct"></span></div>
+    <div class="opt" data-k="safety"><span class="fill"></span><b>🚨 Public safety</b><span class="pct"></span></div>
+    <div id="pollMsg"></div>
+    <button id="resetPoll">Reset my vote</button>
+  </div>
+</section>
+
+<!-- ================= VOICES ================= -->
+<section id="voices">
+  <span class="tag reveal">Voices</span>
+  <h2 class="reveal">What neighbors are saying</h2>
+  <p class="lead reveal">Placeholder quotes — rotate automatically, or use the dots.</p>
+  <div class="quote-box reveal">
+    <blockquote id="qText">“Placeholder endorsement — swap in a real quote from the original site.”</blockquote>
+    <cite id="qWho">— A District 1 Neighbor</cite>
+    <div class="dots" id="qDots"></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <span class="tag reveal">Get Involved</span>
+  <h2 class="reveal">Join the campaign</h2>
+  <p class="lead reveal">Placeholder form — wire the action to your real form handler (Formspree, Hostinger PHP mail, etc.).</p>
+  <form id="joinForm" novalidate class="reveal">
+    <input type="text" id="fName" placeholder="Your name">
+    <input type="email" id="fEmail" placeholder="Email address">
+    <select id="fHow">
+      <option value="">How would you like to help?</option>
+      <option>Volunteer / knock doors</option>
+      <option>Host a yard sign</option>
+      <option>Stay updated by email</option>
+    </select>
+    <textarea id="fMsg" rows="4" placeholder="Anything you'd like Cathryn to know? (optional)"></textarea>
+    <button class="btn btn-red" type="submit">Count me in ➜</button>
+    <div id="formOK">✔ Thanks! You're on the list. (Demo only — connect a real form handler.)</div>
+  </form>
+</section>
+
+<footer>
+  <span class="star">★ ★ ★</span><br><br>
+  Paid for by the Committee to Elect Cathryn Clark — placeholder footer text.<br>
+  © <span id="yr"></span> Cathryn Clark for District 1
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+
+<script>
+/* ---------- typewriter ---------- */
+const lines=[
+  "A voice for every neighborhood in District 1.",          // EDIT: real taglines
+  "Listening first. Acting on what matters.",
+  "Roads. Schools. Jobs. Community.",
+];
+let li=0,ci=0,del=false;
+(function type(){
+  const el=document.getElementById('type');
+  const t=lines[li];
+  el.textContent=t.slice(0,ci);
+  if(!del&&ci<t.length){ci++;setTimeout(type,55);}
+  else if(!del){del=true;setTimeout(type,2200);}
+  else if(ci>0){ci--;setTimeout(type,25);}
+  else{del=false;li=(li+1)%lines.length;setTimeout(type,400);}
+})();
+
+/* ---------- header, progress, back-to-top, scroll-spy ---------- */
+const hdr=document.getElementById('hdr'),toTop=document.getElementById('toTop'),
+      prog=document.getElementById('progress'),
+      navLinks=[...document.querySelectorAll('nav a')],
+      secs=navLinks.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  hdr.classList.toggle('scrolled',y>40);
+  toTop.classList.toggle('show',y>500);
+  prog.style.width=(y/(document.body.scrollHeight-innerHeight)*100)+'%';
+  let cur=-1;
+  secs.forEach((s,i)=>{if(s&&y>=s.offsetTop-120)cur=i;});
+  navLinks.forEach((a,i)=>a.classList.toggle('active',i===cur));
+},{passive:true});
+toTop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+/* ---------- mobile menu ---------- */
+const nav=document.getElementById('nav');
+document.getElementById('burger').onclick=()=>nav.classList.toggle('open');
+navLinks.forEach(a=>a.onclick=()=>nav.classList.remove('open'));
+
+/* ---------- dark mode ---------- */
+const tBtn=document.getElementById('themeBtn');
+const setTheme=t=>{document.documentElement.dataset.theme=t;
+  tBtn.textContent=t==='dark'?'☀️':'🌙';localStorage.setItem('cc-theme',t);};
+setTheme(localStorage.getItem('cc-theme')||'light');
+tBtn.onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+
+/* ---------- reveal on scroll ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- animated counters ---------- */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,to=+el.dataset.to,t0=performance.now();
+  (function tick(t){const p=Math.min((t-t0)/1600,1);
+    el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString()+(p===1?'+':'');
+    if(p<1)requestAnimationFrame(tick);})(t0);
+}),{threshold:.6});
+document.querySelectorAll('.count').forEach(el=>cio.observe(el));
+
+/* ---------- platform cards ---------- */
+document.querySelectorAll('.card').forEach(c=>c.onclick=()=>c.classList.toggle('open'));
+
+/* ---------- poll ---------- */
+const box=document.getElementById('pollBox'),
+      opts=[...box.querySelectorAll('.opt')],
+      seed={roads:38,schools:29,economy:21,safety:12};       // demo seed counts
+function votes(){return JSON.parse(localStorage.getItem('cc-poll')||JSON.stringify(seed));}
+function render(){
+  const v=votes(),tot=Object.values(v).reduce((a,b)=>a+b,0);
+  opts.forEach(o=>{
+    const p=Math.round(v[o.dataset.k]/tot*100);
+    o.querySelector('.fill').style.width=p+'%';
+    o.querySelector('.pct').textContent=p+'%';
+  });
+}
+function confetti(){
+  const cols=['#e8b23a','#c8402f','#0f2a4a','#ffffff'];
+  for(let i=0;i<70;i++){
+    const d=document.createElement('div');d.className='confetti';
+    Object.assign(d.style,{left:Math.random()*100+'vw',
+      width:(6+Math.random()*8)+'px',height:(8+Math.random()*10)+'px',
+      background:cols[i%4],animationDuration:(2+Math.random()*2.5)+'s',
+      animationDelay:(Math.random()*.6)+'s',
+      borderRadius:Math.random()>.5?'50%':'2px'});
+    document.body.appendChild(d);setTimeout(()=>d.remove(),5500);
+  }
+}
+if(localStorage.getItem('cc-voted')){
+  box.classList.add('voted');render();
+  const c=box.querySelector(`.opt[data-k="${localStorage.getItem('cc-voted')}"]`);
+  if(c)c.classList.add('chosen');
+  document.getElementById('pollMsg').textContent='You already voted — here are the current results.';
+}
+opts.forEach(o=>o.onclick=()=>{
+  if(box.classList.contains('voted'))return;
+  const v=votes();v[o.dataset.k]++;
+  localStorage.setItem('cc-poll',JSON.stringify(v));
+  localStorage.setItem('cc-voted',o.dataset.k);
+  box.classList.add('voted');o.classList.add('chosen');render();confetti();
+  document.getElementById('pollMsg').textContent='✔ Vote counted — thanks for making your voice heard!';
+});
+document.getElementById('resetPoll').onclick=()=>{
+  localStorage.removeItem('cc-voted');box.classList.remove('voted');
+  opts.forEach(o=>{o.classList.remove('chosen');
+    o.querySelector('.fill').style.width=0;});
+  document.getElementById('pollMsg').textContent='';
+};
+
+/* ---------- rotating quotes ---------- */
+const quotes=[   // EDIT: real endorsements
+  ["“Placeholder endorsement — swap in a real quote from the original site.”","— A District 1 Neighbor"],
+  ["“Placeholder quote two — Cathryn shows up, listens, and follows through.”","— Local Business Owner"],
+  ["“Placeholder quote three — exactly the kind of leadership District 1 needs.”","— Community Volunteer"],
+];
+const qT=document.getElementById('qText'),qW=document.getElementById('qWho'),
+      qD=document.getElementById('qDots');let qi=0,qTimer;
+quotes.forEach((_,i)=>{const b=document.createElement('button');
+  b.onclick=()=>{show(i);restart();};qD.appendChild(b);});
+function show(i){qi=i;qT.style.opacity=0;
+  setTimeout(()=>{qT.textContent=quotes[i][0];qW.textContent=quotes[i][1];
+    qT.style.opacity=1;},350);
+  [...qD.children].forEach((d,j)=>d.classList.toggle('on',j===i));}
+function restart(){clearInterval(qTimer);qTimer=setInterval(()=>show((qi+1)%quotes.length),6000);}
+show(0);restart();
+
+/* ---------- form ---------- */
+document.getElementById('joinForm').onsubmit=e=>{
+  e.preventDefault();
+  const n=document.getElementById('fName'),m=document.getElementById('fEmail');
+  let ok=true;
+  n.classList.toggle('err',!(ok=n.value.trim()?ok:false)||!n.value.trim());
+  const good=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.value);
+  m.classList.toggle('err',!good);
+  if(!n.value.trim()||!good)return;
+  e.target.querySelectorAll('input,select,textarea,button').forEach(el=>el.style.display='none');
+  document.getElementById('formOK').style.display='block';confetti();
+};
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
